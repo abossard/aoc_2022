@@ -1,5 +1,6 @@
 use std::fs;
 mod day_01;
+mod statics;
 
 fn get_input_day(number: u8) -> String {
     fs::read_to_string(format!("./src/day_{:02}_input.txt", number)).expect("Error reading file")
