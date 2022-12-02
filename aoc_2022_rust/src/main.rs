@@ -1,5 +1,6 @@
 use std::fs;
 mod day_01;
+mod day_02;
 mod statics;
 
 fn get_input_day(number: u8) -> String {
@@ -11,10 +12,8 @@ fn run_fn_day<R>(number: u8, func: fn(&str) -> R) -> R {
 }
 
 fn main() {
-    let day_1_result = run_fn_day(1, day_01::day_01_a);
-    println!("Day 1 result: {}", day_1_result);
-    let day_1_b_result = run_fn_day(1, day_01::day_01_b);
-    println!("Day 1b result: {}", day_1_b_result);
+    let day_2_result = run_fn_day(2, day_02::day_02_b);
+    println!("Day 1 result: {}", day_2_result);
 }
 
 #[cfg(test)]
@@ -30,5 +29,15 @@ mod tests {
     #[test]
     fn test_day_01_b() {
         assert_eq!(run_fn_day(1, day_01::day_01_b), 210367);
+    }
+
+    #[test]
+    fn test_day_02_a() {
+        assert_eq!(run_fn_day(2, day_02::day_02_a), 15572);
+    }
+
+    #[test]
+    fn test_day_02_b() {
+        assert_eq!(run_fn_day(2, day_02::day_02_b), 16098);
     }
 }
