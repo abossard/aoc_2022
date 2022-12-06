@@ -2,6 +2,7 @@ use std::fs;
 mod day_01;
 mod day_02;
 mod day_03;
+mod day_04;
 mod statics;
 
 fn get_input_day(number: u8) -> String {
@@ -45,9 +46,16 @@ mod tests {
     fn test_day_03_a() {
         assert_eq!(run_fn_day(3, day_03::day_03_a), 7785);
     }
-
     #[test]
     fn test_day_03_b() {
         assert_eq!(run_fn_day(3, day_03::day_03_b), 2633);
+    }
+    #[test]
+    fn test_day_04_a() {
+        assert_eq!(run_fn_day(4, day_04::day_04_a), 530);
+    }
+    #[test]
+    fn test_day_04_b() {
+        assert_eq!(run_fn_day(4, day_04::day_04_b), 530);
     }
 }
