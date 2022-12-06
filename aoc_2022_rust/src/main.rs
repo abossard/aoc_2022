@@ -48,6 +48,6 @@ mod tests {
 
     #[test]
     fn test_day_03_b() {
-        assert_eq!(run_fn_day(3, day_03::day_03_b), 70);
+        assert_eq!(run_fn_day(3, day_03::day_03_b), 2633);
     }
 }

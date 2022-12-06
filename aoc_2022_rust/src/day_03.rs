@@ -1,5 +1,4 @@
 use array_tool::vec::Intersect;
-use std::collections::HashMap;
 
 fn convert_to_prio(c: char) -> u32 {
     let ascii = c as u32;
@@ -34,28 +33,20 @@ fn merge_items_by_three(input: Vec<&str>) -> Vec<Vec<&str>> {
     result
 }
 
-fn count_letters(input: &str) -> HashMap<char, u32> {
-    // create hashmap with letter as key and count as value
-    let mut map = std::collections::HashMap::new();
-    for c in input.chars() {
-        let count = map.entry(c).or_insert(0);
-        *count += 1;
-    }
-    map
-}
-
-fn find_common_letter(input: Vec<HashMap<char, u32>>) -> char {
-    // find the letter that is in all three maps
-    let mut result = ' ';
-    for (key, value) in input[0].iter() {
-        if input[1].contains_key(key) && input[2].contains_key(key) {
-            if *value > 1 {
-                result = *key;
+fn find_common_letter(input: Vec<&str>) -> char {
+    for letter in input[0].chars() {
+        let mut found = true;
+        for item in &input[1..] {
+            if !item.contains(letter) {
+                found = false;
+                break;
             }
         }
+        if found {
+            return letter;
+        }
     }
-    println!("{:?}", input);
-    '1'
+    ' '
 }
 
 pub fn day_03_a(input: &str) -> u32 {
@@ -69,7 +60,7 @@ pub fn day_03_a(input: &str) -> u32 {
 pub fn day_03_b(input: &str) -> u32 {
     merge_items_by_three(input.lines().collect())
         .into_iter()
-        .map(|r| find_common_letter(r.into_iter().map(count_letters).collect()))
+        .map(find_common_letter)
         .map(convert_to_prio)
         .sum()
 }
